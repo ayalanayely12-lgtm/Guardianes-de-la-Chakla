@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guardianes de la Chakra · Ciclo de vida de las plantas</title>
+<style>
+:root{--bg:#fbf6ea;--ink:#2b2118;--card:#fff;--line:#e3d5b8;--soft:#f3e9cf;--g:#2f7d46;--y:#e8a317;--r:#c0392b;--bi:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1a14;--ink:#f1e8d4;--card:#2a251c;--line:#4a4130;--soft:#352f23;--g:#5fbf7c;--y:#f0b73a;--r:#e0675a;--bi:#10230f}}
+:root[data-theme="dark"]{--bg:#1d1a14;--ink:#f1e8d4;--card:#2a251c;--line:#4a4130;--soft:#352f23;--g:#5fbf7c;--y:#f0b73a;--r:#e0675a;--bi:#10230f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:720px;margin:0 auto;padding:12px}
+header{background:linear-gradient(135deg,var(--g),var(--y));color:#1b1b1b;border-radius:18px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+h1{font-size:1.25rem;margin:0}header p{margin:2px 0 0;font-size:.85rem}
+#st{font-weight:700;background:rgba(255,255,255,.75);border-radius:20px;padding:4px 12px;white-space:nowrap}
+nav{display:flex;gap:6px;margin:12px 0;overflow-x:auto}
+nav button{flex:1;min-width:84px;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:8px 6px;font:inherit;font-size:.85rem;cursor:pointer}
+nav button.on{border-color:var(--g);background:var(--soft);font-weight:700}
+.sec{display:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px}.sec.on{display:block}
+h2{margin:0 0 6px;font-size:1.1rem}
+.btn{background:var(--g);color:var(--bi);border:0;border-radius:12px;padding:10px 16px;font:inherit;font-weight:700;cursor:pointer;margin:6px 6px 0 0}
+.btn:disabled{opacity:.4}.btn.alt{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px;margin:8px 0}
+.slot,.c{min-height:84px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:.78rem;padding:4px}
+.slot{border:2px dashed var(--line);color:var(--ink);opacity:.7}
+.c{border:2px solid var(--line);background:var(--soft);color:var(--ink);font:inherit;font-size:.78rem;cursor:pointer}
+.c b{font-size:1.9rem;line-height:1}.c.ok{border-color:var(--g);background:color-mix(in srgb,var(--g) 25%,var(--card))}.c.bad{border-color:var(--r);background:color-mix(in srgb,var(--r) 22%,var(--card))}
+.msg{margin:8px 0;padding:8px 10px;border-radius:10px;background:var(--soft)}
+label{display:block;margin:8px 0 2px;font-weight:600}input[type=range]{width:100%;accent-color:var(--g)}
+#pl{height:190px;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(var(--soft),var(--card) 70%);border-radius:14px;border-bottom:14px solid #7a5232;margin:8px 0;overflow:hidden}
+#pl span{display:block;transition:all .5s}
+.bar{height:10px;background:var(--soft);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--g);transition:width .4s}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:10px;border:2px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font:inherit;cursor:pointer}
+.opt.ok{border-color:var(--g)}.opt.bad{border-color:var(--r)}
+#fin{margin-top:12px;text-align:center;border:3px solid var(--y);border-radius:18px;padding:14px;background:var(--soft)}
+table{border-collapse:collapse;width:100%;font-size:.85rem;display:block;overflow-x:auto}td,th{border:1px solid var(--line);padding:5px 7px;text-align:left;vertical-align:top}
+small{opacity:.8}
+.crs{display:flex;gap:6px;align-items:center;margin:0 0 10px}.cb{border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:20px;padding:6px 14px;font:inherit;cursor:pointer}.cb.on{border-color:var(--g);background:var(--soft);font-weight:700}
+</style></head><body><main>
+<header><div><h1>🌽 Guardianes de la Chakra</h1><p>El viaje de la semilla en el Carchi</p></div><div id="st">⭐ 0/4</div></header>
+<nav id="nv"></nav>
+<div id="cr" class="crs"><b>Cultivo:</b><button class="cb on" data-k="maiz">🌽 Maíz</button><button class="cb" data-k="papa">🥔 Papa</button></div>
+
+<section class="sec" id="s0">
+<h2>Estación 1 · Ordena el ciclo <span id="cn">del maíz</span></h2>
+<p>El abuelo guardó una semilla. Toca las tarjetas en el orden en que ocurre el ciclo de vida. Toca una tarjeta puesta para devolverla.</p>
+<div class="grid" id="sl"></div><b>Tarjetas:</b><div class="grid" id="tr"></div>
+<button class="btn" id="ck" disabled>Comprobar</button><button class="btn alt" id="rs1">Mezclar</button>
+<div class="msg" id="m1" hidden></div>
+</section>
+
+<section class="sec" id="s1">
+<h2>Estación 2 · Cuida tu chakra</h2>
+<p>¿Qué necesita una planta para crecer? Ajusta el agua y la luz y deja pasar las semanas. Logra 5 semanas buenas.</p>
+<div id="pl"><span id="pp">🌰</span></div>
+<div class="bar"><i id="br" style="width:0"></i></div><small id="wk">Semana 0</small>
+<label>💧 Agua: <output id="wo">50</output>%</label><input type="range" id="wa" min="0" max="100" value="50">
+<label>☀️ Luz: <output id="lo">50</output>%</label><input type="range" id="su" min="0" max="100" value="50">
+<button class="btn" id="go">Pasar una semana ⏩</button><button class="btn alt" id="rs2">Sembrar de nuevo</button>
+<div class="msg" id="m2">Prueba primero con muy poca agua o muy poca luz y observa qué pasa.</div>
+</section>
+
+<section class="sec" id="s2">
+<h2>Estación 3 · Abejas, viento y caminos de las semillas</h2>
+<div id="q"></div>
+</section>
+
+<section class="sec" id="sd">
+<h2>Estación 4 · Detective de la chakra</h2>
+<p>Lee cada caso del campo y descubre qué le pasó a la planta.</p>
+<div id="d"></div>
+</section>
+
+<section class="sec" id="s3">
+<h2>📋 Planificación para la docente</h2>
+<p><b>Institución:</b> U. E. “Cesar Antonio Mosquera” · <b>Año:</b> 4.º EGB “B” · <b>Área:</b> Ciencias Naturales · <b>Duración:</b> 40 min · <b>Unidad:</b> La diversidad de los seres vivos y sus hábitats</p>
+<p><b>Tema:</b> Ciclo de vida de las plantas (contexto: chakra de maíz, fréjol y papa del Carchi)<br>
+<b>Objetivo de aprendizaje:</b> O.CN.2.1 · <b>Objetivo de clase:</b> Explorar y comprender el ciclo de vida de las plantas y los factores que lo influyen.<br>
+<b>Destreza (DCD):</b> CN.2.1.3 Experimentar y predecir las etapas del ciclo vital de las plantas, sus cambios y respuestas a los estímulos, reconociendo la polinización y la dispersión de la semilla.<br>
+<b>Indicador:</b> I.CN.2.1.1 Explica el ciclo vital de las plantas desde los cambios que se producen en sus etapas e importancia.</p>
+<h2>Ciclo del aprendizaje</h2>
+<table>
+<tr><th>Fase</th><th>Actividad</th></tr>
+<tr><td>Experiencia (5')</td><td>Mostrar semillas reales (maíz, fréjol, haba) y plántulas. Preguntar: ¿qué sembraban sus abuelos o padres en la chakra? ¿cuándo?</td></tr>
+<tr><td>Reflexión (5')</td><td>¿Qué pasa con la semilla en la tierra? ¿Qué necesita una planta para crecer? ¿Qué pasa si le falta luz o agua? (Anticipar respuestas antes de la Estación 2.)</td></tr>
+<tr><td>Conceptualización (10')</td><td>Video corto del ciclo de vida de las plantas y láminas en el pizarrón; lectura breve de las etapas. Estación 1 en proyector, toda la clase decide el orden.</td></tr>
+<tr><td>Aplicación (20')</td><td>Parejas rotan por las Estaciones 2, 3 y 4 (1 celular o tablet por pareja) o juego en proyector con turnos. Elegir maíz o papa según lo que se siembre en la comunidad. Cierre: cada pareja cuenta con sus palabras el viaje de la semilla.</td></tr>
+</table>
+<h2>Recursos</h2>
+<p>Este recurso (funciona sin internet una vez abierto), semillas reales, proyector o celulares, pizarrón. <b>Sin dispositivos:</b> imprimir o dibujar las 7 tarjetas de la Estación 1 y jugar en el patio; la Estación 3 se hace con preguntas orales y mímica.</p>
+<h2>Evaluación · Lista de cotejo (observación directa)</h2>
+<table>
+<tr><th>Criterio</th><th>Lo logra</th><th>En proceso</th><th>Necesita apoyo</th></tr>
+<tr><td>Ordena las 7 etapas y explica por qué una sigue a otra</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>Predice qué pasa si falta agua o luz</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>Reconoce polinización y formas de dispersión</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>Relaciona helada, sequía o falta de luz con la respuesta de la planta</td><td>☐</td><td>☐</td><td>☐</td></tr>
+</table>
+<p><small>Refuerzo en casa: sembrar un fréjol en algodón húmedo y dibujar lo que cambia cada día.</small></p>
+</section>
+
+<div id="fin" hidden><div style="font-size:3rem">🏅</div><h2>¡Eres Guardián/a de la Chakra!</h2><p>Completaste las 4 estaciones. Prueba también el otro cultivo. Reto: cuéntale a tu familia el viaje de la semilla y siembra un fréjol esta semana.</p></div>
+</main>
+<script>
+const $=s=>document.querySelector(s),stars=[0,0,0,0];let crop='maiz';
+const T=['1','2','3','4','📋 Docente'];
+$('#nv').innerHTML=T.map((t,i)=>`<button data-i="${i}">${i<4?'Estación '+t:t}</button>`).join('');
+function show(i){document.querySelectorAll('.sec').forEach((e,j)=>e.classList.toggle('on',i==j));document.querySelectorAll('#nv button').forEach((e,j)=>e.classList.toggle('on',i==j));$('#cr').hidden=i>1}
+$('#nv').onclick=e=>{if(e.target.dataset.i)show(+e.target.dataset.i)};show(0);
+function star(n){stars[n]=1;const s=stars.reduce((a,b)=>a+b);$('#st').textContent='⭐ '+s+'/3';if(s==4)$('#fin').hidden=false}
+
+/* Estación 1 */
+const C={maiz:[
+['🌰','Semilla','El grano guardado duerme hasta tener agua y tierra tibia.'],
+['💧','Germinación','Con agua, la semilla se hincha y la raíz sale primero. Sin germinar no hay planta.'],
+['🌱','Plántula','Ya con raíz, brotan las primeras hojitas que buscan la luz.'],
+['🌿','Planta joven','Con luz y agua crecen el tallo y las hojas; hay que deshierbar y aporcar.'],
+['🌼','Floración','Salen el penacho y los pelitos del choclo; el viento lleva el polen (polinización).'],
+['🌽','Fruto','Tras la polinización los granos se llenan: del choclo tierno a la mazorca seca.'],
+['🧺','Cosecha y nueva semilla','Se guardan los mejores granos para sembrar otra vez: el ciclo se repite.']],
+papa:[
+['🥔','Papa-semilla','Se elige un tubérculo sano con “ojos” y se siembra en el surco: la papa se multiplica con tubérculos.'],
+['👁️','Brotación','De los ojos del tubérculo salen brotes y raíces con humedad y tierra tibia.'],
+['🌱','Emergencia','Los brotes asoman sobre el suelo y sus hojas buscan la luz.'],
+['🌿','Crecimiento y aporque','Crecen tallos y hojas; al aporcar se arrima tierra y se protege a los tubérculos que se forman.'],
+['🌸','Floración','Aparecen las flores; los insectos llevan el polen (polinización).'],
+['🟤','Tuberización','Las hojas fabrican alimento y lo guardan bajo tierra: los tubérculos engordan.'],
+['🧺','Cosecha y papa-semilla','Se arrancan las papas y se guardan las mejores para la próxima siembra: el ciclo se repite.']]};
+let S=C.maiz;
+let ord=[],mix=[],chk=0;
+function mixit(){ord=[];chk=0;mix=[...S.keys()].sort(()=>Math.random()-.5);$('#m1').hidden=true;r1()}
+function card(i,c){return `<button class="c ${c||''}" data-i="${i}"><b>${S[i][0]}</b>${S[i][1]}</button>`}
+function r1(){
+$('#sl').innerHTML=S.map((_,k)=>ord[k]===undefined?`<div class="slot">${k+1}</div>`:card(ord[k],chk?(ord[k]==k?'ok':'bad'):'')).join('');
+$('#tr').innerHTML=mix.filter(i=>!ord.includes(i)).map(i=>card(i)).join('');
+$('#ck').disabled=ord.length<7}
+$('#tr').onclick=e=>{const b=e.target.closest('.c');if(b){ord.push(+b.dataset.i);chk=0;r1()}};
+$('#sl').onclick=e=>{const b=e.target.closest('.c');if(b){ord=ord.filter(i=>i!=b.dataset.i);chk=0;r1()}};
+$('#rs1').onclick=mixit;
+$('#ck').onclick=()=>{chk=1;r1();const n=ord.filter((v,k)=>v==k).length,m=$('#m1');m.hidden=false;
+if(n==7){m.innerHTML='<b>¡Perfecto! Así sigue el ciclo:</b><br>'+S.map((s,k)=>`${k+1}. ${s[0]} <b>${s[1]}</b>: ${s[2]}`).join('<br>');star(0)}
+else m.textContent=n+' de 7 en su lugar. Las tarjetas rojas van en otro sitio: piensa qué necesita pasar antes.'};
+mixit();
+
+/* Estación 2 */
+let wk=0,h=0;
+const PP={maiz:['🌰','🌱','🌱','🌿','🌿','🌽'],papa:['🥔','🌱','🌱','🌿','🌸','🥔']};let P=PP.maiz;
+function pr(){$('#wo').textContent=$('#wa').value;$('#lo').textContent=$('#su').value}
+$('#wa').oninput=$('#su').oninput=pr;
+function draw(ok){const p=$('#pp');p.textContent=P[h];p.style.fontSize=(36+h*24)+'px';p.style.filter=ok?'none':'sepia(1) saturate(.6) brightness(.9)';$('#br').style.width=h*20+'%';$('#wk').textContent='Semana '+wk+' · Crecimiento '+h+'/5'}
+$('#go').onclick=()=>{if(h>=5)return;const w=+$('#wa').value,l=+$('#su').value;let ok=0,m;
+if(w<30)m='💧 Poca agua: las hojas se marchitan y la planta no crece.';
+else if(w>75)m='🌊 Demasiada agua: las raíces no respiran y se pudren.';
+else if(l<30)m='☁️ Poca luz: el tallo se estira, pálido y débil.';
+else if(l>85)m='🔥 Sol muy fuerte: las hojas se queman.';
+else{ok=1;m='✅ Agua y luz justas: ¡la planta crece sana!'}
+wk++;if(ok)h++;draw(ok);
+if(h>=5){m=(crop=='papa'?'🥔 ¡Floreció y formó tubérculos':'🌽 ¡Floreció y dio fruto')+' en '+wk+' semanas! Ya sabes qué necesita una planta.';star(1)}
+$('#m2').textContent=m};
+$('#rs2').onclick=()=>{wk=0;h=0;draw(1);$('#m2').textContent='Nueva siembra. ¡Prueba otra combinación!'};pr();
+
+/* Estación 3 */
+const V=['🌬️ Viento','🐦 Animales','💦 Agua','🧑‍🌾 Personas'];
+const Q=[
+['🐝 Las abejas llevan polen de flor en flor en las habas. ¿Cómo se llama esto?',['Polinización','Germinación','Cosecha'],0,'Sin polinización la flor no forma fruto ni semillas.'],
+['🌼 La semilla del diente de león tiene plumitas. ¿Cómo viaja?',V,0,'Las plumitas la hacen volar lejos con el viento.'],
+['🍒 Los pájaros comen capulí y luego sueltan las semillas lejos. ¿Quién la dispersa?',V,1,'Las semillas pasan por el animal y caen en otro lugar.'],
+['🌊 Unas semillas caen a la acequia y la corriente se las lleva.',V,2,'El agua también transporta semillas.'],
+['🌽 Guardamos granos de maíz y fréjol para la próxima siembra. ¿Quién los dispersa?',V,3,'Las personas siembran y llevan semillas de chakra en chakra.']];
+const D=[
+['🥔 Una madrugada fría en el páramo, las hojas de la papa amanecen negras y blandas. ¿Qué pasó?',['❄️ Helada','🐛 Falta de abono','☀️ Demasiada luz'],0,'La helada congela el agua de las hojas y las daña. Por eso importa sembrar en la época justa.'],
+['🌽 Las hojas del maíz están enrolladas y amarillas, y la tierra está seca y agrietada.',['🌊 Exceso de lluvia','💧 Falta de agua','❄️ Helada'],1,'Sin agua la planta no puede crecer: es una sequía.'],
+['🫘 Unas plantitas de fréjol sembradas bajo un árbol grande están largas, delgadas y pálidas.',['☁️ Les falta luz','💧 Les sobra agua','🔥 Les quemó el sol'],0,'Sin luz suficiente el tallo se estira buscando el sol.'],
+['🥔 Al aporcar, el agricultor arrima tierra a la planta de papa. ¿Para qué sirve?',['Para que no necesite agua','Para proteger los tubérculos que se forman','Para que no florezca'],1,'La tierra cubre y protege los tubérculos mientras engordan.']];
+function quiz(root,Q,si,min,win){let qi=0,sc=0,fail=0;
+const rq=()=>{const x=Q[qi];fail=0;root.innerHTML=`<small>Pregunta ${qi+1} de ${Q.length}</small><p><b>${x[0]}</b></p>`+x[1].map((o,k)=>`<button class="opt" data-k="${k}">${o}</button>`).join('')+'<div class="msg fb" hidden></div>'};
+root.onclick=e=>{const b=e.target.closest('.opt');if(!b)return;const x=Q[qi],fb=root.querySelector('.fb');fb.hidden=false;
+if(+b.dataset.k==x[2]){b.classList.add('ok');if(!fail)sc++;fb.innerHTML='✅ '+x[3]+'<br>';const n=document.createElement('button');n.className='btn';n.textContent=qi<Q.length-1?'Siguiente ➡️':'Ver resultado';n.onclick=()=>{qi++;qi<Q.length?rq():end()};fb.appendChild(n);root.querySelectorAll('.opt').forEach(o=>o.disabled=true)}
+else{fail=1;b.classList.add('bad');b.disabled=true;fb.textContent='Casi. ¡Inténtalo otra vez!'}};
+const end=()=>{root.innerHTML=`<div class="msg"><b>Acertaste ${sc} de ${Q.length} a la primera.</b></div><p>${sc>=min?win:'Repasa e inténtalo de nuevo para ganar la estrella.'}</p><button class="btn again">Jugar otra vez</button>`;if(sc>=min)star(si);root.querySelector('.again').onclick=()=>{qi=0;sc=0;rq()}};
+rq()}
+quiz($('#q'),Q,2,3,'🐝 ¡Ya conoces cómo se polinizan y viajan las semillas!');
+quiz($('#d'),D,3,3,'🔍 ¡Eres un buen detective de la chakra!');
+function setCrop(k){crop=k;S=C[k];P=PP[k];$('#cn').textContent=k=='papa'?'de la papa':'del maíz';document.querySelectorAll('.cb').forEach(b=>b.classList.toggle('on',b.dataset.k==k));mixit();wk=0;h=0;draw(1);$('#m2').textContent='Nueva siembra de '+(k=='papa'?'papa':'maíz')+'. ¡Prueba combinaciones!'}
+$('#cr').onclick=e=>{const b=e.target.closest('.cb');if(b)setCrop(b.dataset.k)};
+setCrop('maiz');
+</script></body></html>
